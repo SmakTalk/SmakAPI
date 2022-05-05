@@ -1,0 +1,19 @@
+{
+  "name": "smakapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SmakTalk/SmakAPI.git"
+  },
+  "author": "Sahil Makhijani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SmakTalk/SmakAPI/issues"
+  },
+  "homepage": "https://github.com/SmakTalk/SmakAPI#readme"
+}
