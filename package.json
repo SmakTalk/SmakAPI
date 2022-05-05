@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/SmakTalk/SmakAPI/issues"
   },
-  "homepage": "https://github.com/SmakTalk/SmakAPI#readme"
+  "homepage": "https://github.com/SmakTalk/SmakAPI#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
 }
