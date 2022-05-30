@@ -1,11 +1,12 @@
+require('dotenv').config();
 const admin = require('firebase-admin');
-const serviceAccount = require('../firebase.json');
+
+const serviceAccount = JSON.parse(process.env.SERVICE_ACCOUNT);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://thesmakbot-default-rtdb.firebaseio.com"
+  databaseURL: process.env.DATABASE_URL
 });
-// admin.initializeApp(functions.config().firebase);
 
 const db = admin.database();
 
