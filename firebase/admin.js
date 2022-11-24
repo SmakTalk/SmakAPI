@@ -1,13 +1,15 @@
-require('dotenv').config();
-const admin = require('firebase-admin');
+import dotenv from 'dotenv';
+import { initializeApp, cert } from 'firebase-admin/app';
+import { getDatabase } from 'firebase-admin/database';
 
+dotenv.config();
 const serviceAccount = JSON.parse(process.env.SERVICE_ACCOUNT);
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+initializeApp({
+  credential: cert(serviceAccount),
   databaseURL: process.env.DATABASE_URL
 });
 
-const db = admin.database();
+const db = getDatabase();
 
-module.exports = { admin, db };
+export default db;

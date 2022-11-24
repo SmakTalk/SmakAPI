@@ -1,5 +1,5 @@
-const firebase = require('firebase');
+import firebase from 'firebase';
 
 firebase.initializeApp(firebaseConfig);
 
-module.exports = { firebase };
+export default { firebase };
