@@ -1,4 +1,4 @@
-const { db } = require('../firebase/admin');
+import db from '../firebase/admin.js';
 
 const deleteChannel = (req, res) => {};
 
@@ -13,4 +13,4 @@ const postChannel = (req, res) => {};
 
 const putChannel = (req, res) => {};
 
-exports.getChannels = getChannels;
+export default { getChannels };
