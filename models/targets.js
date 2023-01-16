@@ -6,6 +6,8 @@ const getTarget = (req, res) => {
     aliasRef.on('value', (snapshot => {
         if (snapshot.val()) {
             res.send(snapshot.val());
+        } else {
+            res.send(undefined);
         }
     }));
 };
