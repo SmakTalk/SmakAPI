@@ -9,7 +9,9 @@ const getToken = (res) => {
 
 const updateToken = (req, res) => {
     const tokenRef = db.ref('token');
-    tokenRef.set(req.body);
+    tokenRef.set(req.body, (err) => {
+        res.send(Boolean(err));
+    });
 };
 
 export { getToken, updateToken };
