@@ -20,7 +20,7 @@ const parsePlatforms = (platformsArr, platformStr) => {
     } else if (platformsArr.length === 2) {
         platformStr += platformsArr[0] + ' and ' + platformsArr[1];
     } else {
-        platformStr += platformsArr[0] + parsePlatforms(platformsArr.slice(1));
+        platformStr += platformsArr[0] + ', ' + parsePlatforms(platformsArr.slice(1), '');
     }
     return platformStr;
 };
