@@ -4,6 +4,7 @@ import getChannels from './models/channels.js';
 import getLatest from './models/latest.js';
 import getTarget from './models/targets.js';
 import { getToken, updateToken } from './models/token.js';
+import getTrivia from './models/trivia.js';
 import express from 'express';
 
 dotenv.config();
@@ -48,6 +49,14 @@ app.get('/token', async (req, res) => {
 app.post('/token', async (req, res) => {
   if (isAuthorized(req)) {
     updateToken(req, res);
+  } else {
+    res.send('Not authorized');
+  }
+});
+
+app.get('/trivia', async (req, res) => {
+  if (isAuthorized(req)) {
+    getTrivia(req);
   } else {
     res.send('Not authorized');
   }
