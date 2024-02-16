@@ -14,7 +14,7 @@ const getTrivia = (res) => {
             }
         });
         res.send(chosenQuestion);
-        updateTrivia(chosenKey, chosenQuestion.Counter);
+        // updateTrivia(chosenKey, chosenQuestion.Counter);
     }));
 }
 
