@@ -56,7 +56,7 @@ app.post('/token', async (req, res) => {
 
 app.get('/trivia', async (req, res) => {
   if (isAuthorized(req)) {
-    getTrivia(req);
+    getTrivia(res);
   } else {
     res.send('Not authorized');
   }
