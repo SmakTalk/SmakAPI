@@ -1,11 +1,28 @@
 import db from '../firebase/admin.js';
 
 const getTrivia = (res) => {
-    const triviaRef = db.ref('/trivia');
+    const triviaRef = db.ref('trivia');
     triviaRef.on('value', (snapshot => {
-        // randomly pick one
-        res.send(snapshot.val());
+        const triviaObj = snapshot.val();
+        const triviaKeys = Object.keys(triviaObj);
+        let chosenKey = triviaKeys[0];
+        let chosenQuestion = triviaObj[chosenKey];
+        triviaKeys.forEach(key => {
+            if (triviaObj[key].Counter < chosenQuestion.Counter) {
+                chosenKey = key;
+                chosenQuestion = triviaObj[key];
+            }
+        });
+        res.send(chosenQuestion);
+        updateTrivia(chosenKey, chosenQuestion.Counter);
     }));
 }
 
-export default { getTrivia };
+const updateTrivia = (chosenKey, counter) => {
+    const triviaRef = db.ref(`trivia/${chosenKey}`);
+    triviaRef.update({Counter: ++counter}, (err) => {
+        if (err) console.log(err);
+    });
+};
+
+export default getTrivia;
