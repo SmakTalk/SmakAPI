@@ -2,7 +2,7 @@ import db from '../firebase/admin.js';
 
 const getTrivia = (res) => {
     const triviaRef = db.ref('trivia');
-    triviaRef.on('value', (snapshot => {
+    triviaRef.once('value', (snapshot) => {
         const triviaObj = snapshot.val();
         const triviaKeys = Object.keys(triviaObj);
         let chosenKey = triviaKeys[0];
@@ -12,10 +12,12 @@ const getTrivia = (res) => {
                 chosenKey = key;
                 chosenQuestion = triviaObj[key];
             }
+        }, (err) => {
+            if (err) console.log(err);
         });
         res.send(chosenQuestion);
-        // updateTrivia(chosenKey, chosenQuestion.Counter);
-    }));
+        updateTrivia(chosenKey, chosenQuestion.Counter);
+    });
 }
 
 const updateTrivia = (chosenKey, counter) => {
