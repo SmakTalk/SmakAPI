@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import getChannels from './models/channels.js';
+import postWinners from './models/entries.js';
 import getLatest from './models/latest.js';
 import getTarget from './models/targets.js';
 import { getToken, updateToken } from './models/token.js';
@@ -57,6 +58,14 @@ app.post('/token', async (req, res) => {
 app.get('/trivia', async (req, res) => {
   if (isAuthorized(req)) {
     getTrivia(res);
+  } else {
+    res.send('Not authorized');
+  }
+});
+
+app.post('/winners', async (req, res) => {
+  if (isAuthorized(req)) {
+    postWinners(req, res);
   } else {
     res.send('Not authorized');
   }
